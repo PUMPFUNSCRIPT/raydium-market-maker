@@ -1,4 +1,4 @@
-<h1>Autonomous Raydium and PumpSwap Market Maker, Volume Booster</h1>
+<h1>Autonomous Raydium, PumpFun, and PumpSwap Market Maker, Volume Booster</h1>
 
 <h3>CONFIG Guide (config.json):</h3>
 
