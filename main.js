@@ -1,6 +1,7 @@
 import * as SPL from '@solana/spl-token';
 import { Connection } from '@solana/web3.js';
 import autoTx from './src/autoTx.js';
+import pumpFun from './src/pumpFun.js';
 import { pumpSwapBuy, pumpSwapSell } from './src/pumpSwap.js';
 import { organicVol, sellOnly } from './src/organicVol.js';
 import { calculateVolumeAndCost, calculateVolumeAndCost2 } from './src/calc.js';
@@ -22,7 +23,8 @@ function displayMainMenu() {
         ['3', 'Sell Tokens', 'Immediately sell all tokens bought using organic volume mode'],
         ['4', 'Volume Calculator', 'Calculate the total token volume based on user-specified\nparameters such as Min and Max buy in SOL,\nDesired Volume, and token exchange rate.'],
         ['5', 'PumpSwap Bot', 'Pumpswap rank bot and sell bot'],
-        ['6', 'Exit', 'Exit the program / CTRL + C to exit at any point.']
+        ['6', 'PumpFUN Bot', 'PumpFUN rank bot and sell bot'],
+        ['7', 'Exit', 'Exit the program / CTRL + C to exit at any point.']
     );
     console.log(table.toString());
 }
@@ -141,9 +143,16 @@ async function main() {
                 await handleVolCalcMenu();
                 break;
             case '5':
+                console.log(chalk.green('\n---> MODE SELECTED <---'));
+                console.log(chalk.hex('#FF9900')("🎉 PUMPSWAP\n\n"));
                 await handlePumpSwapMenu();
                 break;
             case '6':
+                console.log(chalk.green('\n---> MODE SELECTED <---'));
+                console.log(chalk.hex('#FF9900')("🎉 PUMPFUN\n\n"));
+                await pumpFun();
+                break;
+            case '7':
                 console.log(chalk.green('Exiting program.'));
                 return;
             default:
